@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>FRG Toolbox</title>
+    
+    <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+    
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f5f5;
+        }
+        
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .tool-section {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .tool-section h2 {
+            font-size: 18px;
+            color: #2b579a;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+        
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+        }
+        
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #2b579a;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        button:hover {
+            background: #1e4278;
+        }
+        
+        button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        
+        .status {
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 4px;
+            font-size: 13px;
+            display: none;
+        }
+        
+        .status.success {
+            background: #d4edda;
+            color: #155724;
+            display: block;
+        }
+        
+        .status.error {
+            background: #f8d7da;
+            color: #721c24;
+            display: block;
+        }
+        
+        .status.info {
+            background: #d1ecf1;
+            color: #0c5460;
+            display: block;
+        }
+        
+        .help-text {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+        
+        .loader {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #2b579a;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            animation: spin 1s linear infinite;
+            display: inline-block;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎨 FRG Toolbox</h1>
+        
+        <!-- Icon Generator -->
+        <div class="tool-section">
+            <h2>✨ Generate Icon</h2>
+            <p class="help-text">Describe an icon and AI will generate it for you</p>
+            <input type="text" id="iconPrompt" placeholder="e.g., blue rocket launching into space">
+            <button onclick="generateIcon()">Generate Icon</button>
+            <div id="iconStatus" class="status"></div>
+        </div>
+        
+        <!-- Logo Fetcher -->
+        <div class="tool-section">
+            <h2>🔍 Fetch Logo</h2>
+            <p class="help-text">Search for company or brand logos</p>
+            <input type="text" id="logoSearch" placeholder="e.g., Microsoft, Apple, Google">
+            <button onclick="fetchLogo()">Fetch Logo</button>
+            <div id="logoStatus" class="status"></div>
+        </div>
+        
+        <!-- Background Remover -->
+        <div class="tool-section">
+            <h2>🖼️ Remove Background</h2>
+            <p class="help-text">Select an image on your slide first, then click below</p>
+            <button onclick="removeBackground()">Remove Background</button>
+            <div id="bgStatus" class="status"></div>
+        </div>
+    </div>
+    
+    <script src="taskpane.js"></script>
+</body>
+</html>
